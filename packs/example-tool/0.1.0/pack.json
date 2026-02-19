@@ -1,0 +1,55 @@
+{
+  "pack": {
+    "id": "example-tool",
+    "version": "0.1.0",
+    "issuedAt": "2026-02-19T00:00:00Z"
+  },
+  "mappings": [
+    {
+      "id": "example-tool-basic",
+      "name": "Example Tool Basic Mapping",
+      "source": "community",
+      "priority": 10,
+      "match": {
+        "allOf": ["$.tool", "$.results"]
+      },
+      "metadata": {
+        "titlePath": "$.report.title",
+        "issuerPath": "$.report.issuer",
+        "datePath": "$.report.timestamp",
+        "scopePath": "$.report.scope",
+        "reportTypePath": "$.report.type"
+      },
+      "controls": {
+        "path": "$.results[*]",
+        "idPath": "$.id",
+        "descriptionPath": "$.title",
+        "statusPath": "$.status",
+        "statusMap": {
+          "pass": "effective",
+          "fail": "ineffective",
+          "skip": "not-tested"
+        },
+        "severityPath": "$.severity",
+        "severityMap": {
+          "critical": "CRITICAL",
+          "high": "HIGH",
+          "medium": "MEDIUM",
+          "low": "LOW"
+        },
+        "evidencePath": "$.details",
+        "frameworkRefs": {
+          "path": "$.frameworks[*]",
+          "frameworkPath": "$.framework",
+          "controlIdPath": "$.id",
+          "controlNamePath": "$.name"
+        }
+      },
+      "passthrough": {
+        "paths": {
+          "ext.rawSource": "$.metadata"
+        }
+      }
+    }
+  ]
+}

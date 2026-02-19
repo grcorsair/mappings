@@ -1,0 +1,28 @@
+{
+  "tool": "ExampleTool",
+  "report": {
+    "title": "Example Scan",
+    "issuer": "Example Corp",
+    "timestamp": "2026-02-18T12:00:00Z",
+    "scope": "prod",
+    "type": "scan"
+  },
+  "results": [
+    {
+      "id": "CTRL-1",
+      "title": "MFA enforced",
+      "status": "pass",
+      "severity": "high",
+      "details": {
+        "resource": "iam:user/alice",
+        "reason": "MFA enabled"
+      },
+      "frameworks": [
+        { "framework": "SOC2", "id": "CC6.1", "name": "Logical Access" }
+      ]
+    }
+  ],
+  "metadata": {
+    "source": "example"
+  }
+}
