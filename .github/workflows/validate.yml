@@ -16,6 +16,9 @@ jobs:
       - name: Install Corsair CLI
         run: |
           bun add -g corsair
+      - name: Validate index
+        run: |
+          bun scripts/validate-index.ts index.json
       - name: Validate packs
         run: |
           set -e

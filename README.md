@@ -7,6 +7,7 @@ Mapping packs describe how to translate tool output into Corsair's canonical con
 
 ```
 index.json                      # Discovery manifest
+schemas/                        # JSON schema for index.json
 signers/                        # Public keys for pack verification
 packs/<tool>/<version>/         # Mapping packs (one tool per version)
   mappings/                     # Mapping JSON files
@@ -29,6 +30,7 @@ packs/<tool>/<version>/         # Mapping packs (one tool per version)
 5. Run validation:
    ```bash
    corsair mappings validate --file ./packs/<tool>/<version>/pack.json
+   bun scripts/validate-index.ts index.json
    ```
 6. Update `index.json` with a new entry.
 7. Open a PR.
@@ -67,6 +69,11 @@ corsair sign --file tool-output.json
   }
 ]
 ```
+
+## Index schema + validation
+
+- Schema: `schemas/index.schema.json`
+- Validator: `bun scripts/validate-index.ts index.json`
 
 ## Signing rules
 
